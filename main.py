@@ -39,18 +39,7 @@ cors_origins_from_env = [
 ]
 cors_origin_regex = (os.getenv("CORS_ORIGIN_REGEX") or "").strip() or None
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        *cors_origins_from_env,
-    ],
-    allow_origin_regex=cors_origin_regex,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+allow_origins=["*"]
 
 
 def ensure_demo_users():
