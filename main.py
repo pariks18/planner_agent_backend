@@ -39,7 +39,16 @@ cors_origins_from_env = [
 ]
 cors_origin_regex = (os.getenv("CORS_ORIGIN_REGEX") or "").strip() or None
 
-allow_origins=["*"]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://planneragentfrontend.vercel.app",
+        "http://localhost:5173"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 def ensure_demo_users():
